@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "description": "[![Actions Status](https://github.com/Raition/fullstack-javascript-project-lvl1/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Raition/fullstack-javascript-project-lvl1/actions)",
-  "main": "index.js",
+  "main": "brain-games.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -31,5 +31,8 @@
     "eslint-plugin-react": "^7.37.3",
     "eslint-plugin-react-hooks": "^4.6.2",
     "globals": "^15.14.0"
+  },
+  "dependencies": {
+    "readline-sync": "^1.4.10"
   }
 }
