@@ -1,4 +1,9 @@
+#!/usr/bin/env node
+
 import readlineSync from 'readline-sync';
+import sayHello from '../src/cli.js';
+
+const name = sayHello();
 
 const isEven = (num) => {
   if (num % 2 === 0) {
@@ -20,11 +25,11 @@ const brainMath = () => {
     } else if (answer === 'no' && !isEven(rnd)) {
       console.log('Correct!');
     } else {
-      console.log('\'yes\' is wrong answer ;(. Correct answer was \'no\'.\nLets try again, Bill!');
+      console.log(`'yes' is wrong answer ;(. Correct answer was 'no'.\nLets try again, ${name}!`);
       return false;
     }
   }
-  console.log('Congratulations!');
+  console.log(`Congratulations, ${name}!`);
   return true;
 };
 brainMath();
