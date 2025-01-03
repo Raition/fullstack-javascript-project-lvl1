@@ -24,8 +24,11 @@ const brainMath = () => {
       console.log('Correct!');
     } else if (answer === 'no' && !isEven(rnd)) {
       console.log('Correct!');
-    } else {
+    } else if (answer === 'yes' && !isEven(rnd)) {
       console.log(`'yes' is wrong answer ;(. Correct answer was 'no'.\nLets try again, ${name}!`);
+      return false;
+    } else if (answer === 'no' && isEven(rnd)) {
+      console.log(`'no' is wrong answer ;(. Correct answer was 'yes'.\nLets try again, ${name}!`);
       return false;
     }
   }
