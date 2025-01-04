@@ -9,3 +9,6 @@ publish: # публикация
 
 lint: # linting
 	npx eslint .
+
+fix: # linting fix
+	npx eslint --fix .

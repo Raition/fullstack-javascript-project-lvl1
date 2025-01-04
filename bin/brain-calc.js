@@ -2,4 +2,4 @@
 
 import * as brain from '../src/index.js';
 
-brain.brainEven();
+brain.brainCalc();
