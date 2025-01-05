@@ -14,6 +14,7 @@ const generateRound = () => {
       stack.push(i);
     }
   }
+
   const correctAnswer = String(stack.pop());
 
   return [question, correctAnswer];
