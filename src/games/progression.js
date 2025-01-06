@@ -1,29 +1,29 @@
 import { getRandomNumber } from './utils.js';
+import runGame from '../index.js';
 
 const gameDescription = 'What number is missing in the progression?';
 
-const generateRound = () => {
-  let progression = '';
-  let firstNum = getRandomNumber(1, 20);
-  const progressionNum = getRandomNumber(1, 20);
-  const space = getRandomNumber(2, 8);
-  let hiddenNum = 0;
-
-  for (let i = 0; i < 9; i += 1) {
-    if (i === space) {
-      progression += '.. ';
-      firstNum += progressionNum;
-      hiddenNum = firstNum;
-      // eslint-disable-next-line no-continue
-      continue;
-    }
-    firstNum += progressionNum;
-    progression += `${firstNum} `;
+const generateProgression = (start, step, length) => {
+  const progression = [];
+  for (let i = 0; i < length; i += 1) {
+    progression.push(start + step * i);
   }
+  return progression;
+};
 
-  const question = progression;
-  const correctAnswer = String(hiddenNum);
+const generateRound = () => {
+  const start = getRandomNumber(1, 20);
+  const step = getRandomNumber(1, 20);
+  const length = 10;
+
+  const progression = generateProgression(start, step, length);
+
+  const hiddenNum = getRandomNumber(0, length - 1);
+  const correctAnswer = String(progression[hiddenNum]);
+  progression[hiddenNum] = '..';
+  const question = progression.join(' ');
+
   return [question, correctAnswer];
 };
 
-export { gameDescription, generateRound };
+export default () => runGame(gameDescription, generateRound);

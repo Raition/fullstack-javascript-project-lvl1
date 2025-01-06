@@ -1,6 +1,14 @@
 import { getRandomNumber, findMax } from './utils.js';
+import runGame from '../index.js';
 
 const gameDescription = 'Find the greatest common divisor of given numbers.';
+
+const gcd = (num1, num2, i) => {
+  if (num1 % i === 0 && num2 % i === 0) {
+    return true;
+  }
+  return false;
+};
 
 const generateRound = () => {
   const num1 = getRandomNumber(1, 100);
@@ -10,7 +18,7 @@ const generateRound = () => {
   const question = `${num1} ${num2}`;
 
   for (let i = 1; i <= maxNum; i += 1) {
-    if (num1 % i === 0 && num2 % i === 0) {
+    if (gcd(num1, num2, i)) {
       stack.push(i);
     }
   }
@@ -20,4 +28,4 @@ const generateRound = () => {
   return [question, correctAnswer];
 };
 
-export { gameDescription, generateRound };
+export default () => runGame(gameDescription, generateRound);

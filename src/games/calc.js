@@ -1,34 +1,31 @@
 import { getRandomNumber } from './utils.js';
+import runGame from '../index.js';
 
 const gameDescription = 'What is the result of the expression?';
 
+const calculate = (num1, num2, operator) => {
+  switch (operator) {
+    case '+':
+      return num1 + num2;
+    case '-':
+      return num1 - num2;
+    case '*':
+      return num1 * num2;
+    default:
+      throw new Error(`Unknown operator: ${operator}`);
+  }
+};
+
 const generateRound = () => {
-  const operations = ['+', '-', '*'];
   const num1 = getRandomNumber(1, 25);
   const num2 = getRandomNumber(1, 25);
-  const operation = operations[getRandomNumber(0, operations.length - 1)];
+  const operations = ['+', '-', '*'];
+  const operator = operations[Math.floor(Math.random() * operations.length)];
 
-  let question;
-  let correctAnswer;
-
-  switch (operation) {
-    case '+':
-      question = `${num1} + ${num2}`;
-      correctAnswer = String(num1 + num2);
-      break;
-    case '-':
-      question = `${num1} - ${num2}`;
-      correctAnswer = String(num1 - num2);
-      break;
-    case '*':
-      question = `${num1} * ${num2}`;
-      correctAnswer = String(num1 * num2);
-      break;
-    default:
-      console.log('raition)');
-  }
+  const question = `${num1} ${operator} ${num2}`;
+  const correctAnswer = String(calculate(num1, num2, operator));
 
   return [question, correctAnswer];
 };
 
-export { gameDescription, generateRound };
+export default () => runGame(gameDescription, generateRound);
