@@ -3,7 +3,7 @@ import runGame from '../index.js';
 
 const gameDescription = 'Find the greatest common divisor of given numbers.';
 
-const gcd = (num1, num2, i) => {
+const findGcd = (num1, num2, i) => {
   if (num1 % i === 0 && num2 % i === 0) {
     return true;
   }
@@ -18,7 +18,7 @@ const generateRound = () => {
   const question = `${num1} ${num2}`;
 
   for (let i = 1; i <= maxNum; i += 1) {
-    if (gcd(num1, num2, i)) {
+    if (findGcd(num1, num2, i)) {
       stack.push(i);
     }
   }
