@@ -1,7 +1,14 @@
-import { getRandomNumber, findMax } from './utils.js';
+import getRandomNumber from './utils.js';
 import runGame from '../index.js';
 
 const gameDescription = 'Find the greatest common divisor of given numbers.';
+
+const findMax = (num1, num2) => {
+  if (num1 > num2) {
+    return num1;
+  }
+  return num2;
+};
 
 const gcd = (num1, num2, i) => {
   if (num1 % i === 0 && num2 % i === 0) {
